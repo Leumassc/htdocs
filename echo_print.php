@@ -9,10 +9,12 @@
     <body>
     
     <?php
-    echo 'Welcome to My PHP Page';
-    ?> 
-<br/>
-    <?= 'tag de impressão' ?>
+
+    echo 'Comando echo <br/> <hr/>';
+    
+    print 'Comando print<hr>'; 
+
+    ?>
 
     </body>
 
