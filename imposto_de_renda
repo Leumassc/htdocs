@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IMPOSTO DE RENDA</title>
+    </head>
+
+<body style = 
+"font-family: sans-serif; 
+position: absolute; 
+left: 50%; 
+top: 50%; 
+transform: translate(-50%, -50%); 
+background-color: #f0f0f0; 
+padding: 20px; 
+border-radius: 10px; 
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+
+
+
+    <h3 style = "text-align: center;">Imposto de Renda</h3>
+
+    <h4 style = "text-align: center; margin-top: -10px;">Calcule o valor do seu imposto de renda com base no seu salário</h4>
+
+    <form method="POST" style="text-align: center; margin-bottom: 20px;"> 
+    <div>
+        <label for="salario" style="margin-right: 10px; font-weight: bold; font-family: sans-serif;">
+            SALÁRIO: 
+        </label>
+
+        <input type="number" step="0.01" name="salario" id="salario" placeholder="Digite seu salário" required style = "padding: 10px 20px; border: 1px solid #ccc; border-radius: 5px; width: 200px; font-family: chapazan;">
+        <button type="submit" style = "background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Calcular</button>
+
+    </div>
+</form>
+
+    <?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['salario'])) {
+    
+    function calcularImpostoDeRenda($salario){
+        if($salario < 1903.98){
+            return "Isento de Imposto de Renda";
+        }
+        elseif($salario >= 1903.99 && $salario <= 2826.65){
+            $aliquota = 7.5 / 100;
+            return "O valor do seu Iposto de Renda é de R$ " . $salario * 0.075;
+        }
+        elseif($salario >= 2826.66 && $salario <= 3751.05){
+            $aliquota = 15 / 100;
+            return "O valor do seu imposto de Renda é de R$" . $salario * 0.15;
+        }
+        elseif($salario >= 3751.06 && $salario <= 4664.68){
+            $aliquota = 22.5 / 100;
+            return "O valor do seu imposto de Renda é de R$" . $salario * 0.225;
+        }
+        else{
+            $aliquota = 27.5 / 100;
+            return "O valor do seu imposto de Renda é de R$" . $salario * 0.275;
+        }
+
+    }
+
+    echo "<div style='text-align: center; font-weight: bold; color: #333;'>";
+        echo calcularImpostoDeRenda($salario = $_POST['salario']);
+        echo "</div>";
+    
+    }
+    ?>
+</body>
+</html>
